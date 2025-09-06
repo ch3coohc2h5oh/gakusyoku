@@ -1,0 +1,76 @@
+<div class="container my-4">
+  <h3 class="text-center mb-4">メニュー詳細</h3>
+
+  <div class="card shadow-sm mb-4">
+    <% if @tweet.image.attached? %>
+      <%= image_tag @tweet.image, class: "card-img-top", style: "max-height:300px; object-fit:cover;" %>
+    <% end %>
+
+    <div class="card-body">
+      <h4 class="card-title"><%= @tweet.name %></h4>
+      <p class="card-text"><%= @tweet.about %></p>
+      <p class="text-muted small">投稿日時: <%= @tweet.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+
+      <div class="d-flex align-items-center mb-3">
+        <% if user_signed_in? %>
+          <% if current_user.already_liked?(@tweet) %>
+            <%= link_to tweet_like_path(id: @tweet.id, tweet_id: @tweet.id), data: { turbo_method: :delete }, class: "me-2" do %>
+              <i class="fas fa-heart text-danger"></i>
+              <%= @tweet.likes.count %>
+            <% end %>
+          <% else %>
+            <%= link_to tweet_likes_path(id: @tweet.id, tweet_id: @tweet.id), data: { turbo_method: :post }, class: "me-2" do %>
+              <i class="far fa-heart text-danger"></i>
+              <%= @tweet.likes.count %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <i class="far fa-heart text-danger me-1"></i><%= @tweet.likes.count %>
+        <% end %>
+      </div>
+
+      <% if user_signed_in? && (current_user.admin? || current_user == @tweet.user) %>
+        <%= link_to "編集する", edit_tweet_path(@tweet.id), class: "btn btn-outline-secondary btn-sm me-2" %>
+        <%= button_to "削除する", tweet_path(@tweet.id), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- いいねしたユーザー -->
+  <div class="mb-4">
+    <h5>いいねしたユーザー</h5>
+    <ul class="list-group">
+      <% @tweet.liked_users.each do |user| %>
+        <li class="list-group-item"><%= user.email %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <!-- コメント一覧 -->
+  <div class="mb-4">
+    <h5>コメント一覧</h5>
+    <% @comments.each do |c| %>
+      <div class="border rounded p-2 mb-2">
+        <p class="mb-1"><strong><%= c.user.email unless c.user.blank? %></strong></p>
+        <p class="mb-0"><%= c.content %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- コメント投稿フォーム -->
+  <% if user_signed_in? %>
+    <div class="card p-3 mb-4">
+      <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+        <div class="mb-2">
+          <%= f.text_area :content, class: "form-control", placeholder: "コメントを入力..." %>
+        </div>
+        <%= button_tag type: "submit", class: "btn btn-primary" do %>
+          <i class="far fa-comments"></i> コメントする
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+
+  <%= link_to "投稿一覧に戻る", tweets_path, class: "btn btn-outline-primary" %>
+</div>
