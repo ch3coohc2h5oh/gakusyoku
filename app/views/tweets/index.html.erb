@@ -3,85 +3,198 @@
 
   <!-- 定食 -->
   <h3 class="mt-4">定食</h3>
-  <ul class="list-group mb-4">
-    <li class="list-group-item d-flex justify-content-between">
-    <%= image_tag "karaage.jpg" %>
-      唐揚げ定食 <span>¥550</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      チキン南蛮定食 <span>¥580</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      オムライス <span>¥580</span>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "karaage.jpg", class: "card-img-top", alt: "唐揚げ定食" %>
+        <div class="card-body">
+          <h5 class="card-title">唐揚げ定食</h5>
+          <p class="card-text">¥550</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "chicken_nanban.jpg", class: "card-img-top", alt: "チキン南蛮定食" %>
+        <div class="card-body">
+          <h5 class="card-title">チキン南蛮定食</h5>
+          <p class="card-text">¥580</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "omurice.jpg", class: "card-img-top", alt: "オムライス" %>
+        <div class="card-body">
+          <h5 class="card-title">オムライス</h5>
+          <p class="card-text">¥580</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- 鉄鍋 -->
   <h3 class="mt-4">鉄鍋</h3>
-  <ul class="list-group mb-4">
-    <li class="list-group-item d-flex justify-content-between">
-      Umart！カレー <span>¥420</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      肉みそビビンバ <span>¥560</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      明太チーズビビンバ <span>¥560</span>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "umart_curry.jpg", class: "card-img-top", alt: "Umart！カレー" %>
+        <div class="card-body">
+          <h5 class="card-title">Umart！カレー</h5>
+          <p class="card-text">¥420</p>
+        </div>
+      </div>
+    </div>
 
-  <!-- 麺類 -->
+     <!-- 麺類 -->
   <h3 class="mt-4">麺類</h3>
-  <ul class="list-group mb-4">
-    <li class="list-group-item d-flex justify-content-between">
-      かけうどん <span>¥300</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      たぬきうどん <span>¥330</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      きつねうどん <span>¥390</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      肉うどん <span>¥480</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      カレーうどん <span>¥450</span>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "kake_udon.jpg", class: "card-img-top", alt: "かけうどん" %>
+        <div class="card-body">
+          <h5 class="card-title">かけうどん</h5>
+          <p class="card-text">¥300</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "tanuki_udon.jpg", class: "card-img-top", alt: "たぬきうどん" %>
+        <div class="card-body">
+          <h5 class="card-title">たぬきうどん</h5>
+          <p class="card-text">¥330</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "kitsune_udon.jpg", class: "card-img-top", alt: "きつねうどん" %>
+        <div class="card-body">
+          <h5 class="card-title">きつねうどん</h5>
+          <p class="card-text">¥390</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "niku_udon.jpg", class: "card-img-top", alt: "肉うどん" %>
+        <div class="card-body">
+          <h5 class="card-title">肉うどん</h5>
+          <p class="card-text">¥480</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "curry_udon.jpg", class: "card-img-top", alt: "カレーうどん" %>
+        <div class="card-body">
+          <h5 class="card-title">カレーうどん</h5>
+          <p class="card-text">¥450</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- デザート -->
   <h3 class="mt-4">デザート</h3>
-  <ul class="list-group mb-4">
-    <li class="list-group-item d-flex justify-content-between">
-      シュガーバタークレープ <span>¥300</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      クレームブリュレクレープ <span>¥390</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      チョコクリームクレープ <span>¥330</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      キャラメルクリームクレープ <span>¥330</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      いちごチョコクリームクレープ <span>¥420</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      バナナチョコクリームクレープ <span>¥420</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      バニラソフト <span>¥190</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      チョコソフト <span>¥190</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      ミックスソフト <span>¥190</span>
-    </li>
-  </ul>
-</div>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "sugar_butter_crepe.jpg", class: "card-img-top", alt: "シュガーバタークレープ" %>
+        <div class="card-body">
+          <h5 class="card-title">シュガーバタークレープ</h5>
+          <p class="card-text">¥300</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "creme_brulee_crepe.jpg", class: "card-img-top", alt: "クレームブリュレクレープ" %>
+        <div class="card-body">
+          <h5 class="card-title">クレームブリュレクレープ</h5>
+          <p class="card-text">¥390</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "choco_crepe.jpg", class: "card-img-top", alt: "チョコクリームクレープ" %>
+        <div class="card-body">
+          <h5 class="card-title">チョコクリームクレープ</h5>
+          <p class="card-text">¥330</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "caramel_crepe.jpg", class: "card-img-top", alt: "キャラメルクリームクレープ" %>
+        <div class="card-body">
+          <h5 class="card-title">キャラメルクリームクレープ</h5>
+          <p class="card-text">¥330</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "ichigo_choco_crepe.jpg", class: "card-img-top", alt: "いちごチョコクリームクレープ" %>
+        <div class="card-body">
+          <h5 class="card-title">いちごチョコクリームクレープ</h5>
+          <p class="card-text">¥420</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "banana_choco_crepe.jpg", class: "card-img-top", alt: "バナナチョコクリームクレープ" %>
+        <div class="card-body">
+          <h5 class="card-title">バナナチョコクリームクレープ</h5>
+          <p class="card-text">¥420</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "vanilla_soft.jpg", class: "card-img-top", alt: "バニラソフト" %>
+        <div class="card-body">
+          <h5 class="card-title">バニラソフト</h5>
+          <p class="card-text">¥190</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "choco_soft.jpg", class: "card-img-top", alt: "チョコソフト" %>
+        <div class="card-body">
+          <h5 class="card-title">チョコソフト</h5>
+          <p class="card-text">¥190</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag "mix_soft.jpg", class: "card-img-top", alt: "ミックスソフト" %>
+        <div class="card-body">
+          <h5 class="card-title">ミックスソフト</h5>
+          <p class="card-text">¥190</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <section id="concept" class="py-5" style="background-color: #5C7099; color: white;">
   <div class="container">
