@@ -197,28 +197,36 @@
     </div>
   </div>
 
-<section id="concept" class="py-5" style="background-color: #5C7099; color: white;">
-  <div class="container">
-    <h2 class="fw-bold mb-4">Umart！のコンセプト</h2>
+<section id="concept" class="py-5 text-white" 
+  style="background: url('<%= asset_path 'umart!2.jpg' %>') no-repeat center center; 
+         background-size: cover; 
+         color: white; 
+         position: relative;">
 
-    <div class="mb-4">
-      <p class="mb-1 fw-bold">U = University + Utopia</p>
-      <p class="ms-3">… 大学をみんなの理想郷に、憧れの詰まった場所に</p>
-    </div>
+  <!-- 半透明のオーバーレイで文字を読みやすくする -->
+  <div style="background-color: rgba(0,0,0,0.5); padding: 2rem;">
+    <div class="container">
+      <h2 class="fw-bold mb-4">Umart！のコンセプト</h2>
 
-    <div class="mb-4">
-      <p class="mb-1 fw-bold">Uma＋！＝うまっ！</p>
-      <p class="ms-3">… 思わず声に出してしまうような「おいしさ」を届ける</p>
-    </div>
+      <div class="mb-4">
+        <p class="mb-1 fw-bold">U = University + Utopia</p>
+        <p class="ms-3">… 大学をみんなの理想郷に、憧れの詰まった場所に</p>
+      </div>
 
-    <div class="mb-4">
-      <p class="mb-1 fw-bold">mart = 市場</p>
-      <p class="ms-3">… 生産者と消費者が繋がる場所、つくり手の思いを知る</p>
-    </div>
+      <div class="mb-4">
+        <p class="mb-1 fw-bold">Uma＋！＝うまっ！</p>
+        <p class="ms-3">… 思わず声に出してしまうような「おいしさ」を届ける</p>
+      </div>
 
-    <div class="mb-4">
-      <p class="mb-1 fw-bold">art = 表現・創造</p>
-      <p class="ms-3">… 学生が自由に夢を表現する、自ら価値を創造していく</p>
+      <div class="mb-4">
+        <p class="mb-1 fw-bold">mart = 市場</p>
+        <p class="ms-3">… 生産者と消費者が繋がる場所、つくり手の思いを知る</p>
+      </div>
+
+      <div class="mb-4">
+        <p class="mb-1 fw-bold">art = 表現・創造</p>
+        <p class="ms-3">… 学生が自由に夢を表現する、自ら価値を創造していく</p>
+      </div>
     </div>
   </div>
 </section>
@@ -240,50 +248,51 @@
   </div>
 
   <div class="row">
-    <% @tweets.each do |t| %>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm h-100">
-          <% if t.image.attached? %>
-            <%= image_tag t.image, class: "card-img-top", style: "height:200px; object-fit:cover;" %>
-          <% end %>
+  <% @tweets.each do |t| %>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-lg border-0 rounded-4 overflow-hidden h-100" 
+           style="background: linear-gradient(135deg, #ffffff, #f7f9fc);">
+        
+        <% if t.image.attached? %>
+          <%= image_tag t.image, class: "card-img-top", style: "height:200px; object-fit:cover;" %>
+        <% end %>
 
-          <div class="card-body">
-            <h5 class="card-title"><%= t.name %></h5>
-            <p class="card-text text-muted"><%= t.about %></p>
-            <p class="small">投稿者: <%= t.user.email %></p>
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><%= t.name %></h5>
+          <p class="card-text text-muted"><%= t.about %></p>
+          <p class="small">投稿者: <%= t.user.email %></p>
 
-            <div class="d-flex align-items-center mb-2">
-              <% if user_signed_in? %>
-                <% if current_user.already_liked?(t) %>
-                  <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), data: { turbo_method: :delete }, class: "me-2" do %>
-                    <i class="fas fa-heart text-danger"></i>
-                    <%= t.likes.count %>
-                  <% end %>
-                <% else %>
-                  <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), data: { turbo_method: :post }, class: "me-2" do %>
-                    <i class="fas fa-heart text-danger"></i>
-                    <%= t.likes.count %>
-                  <% end %>
+          <div class="d-flex align-items-center mb-2">
+            <% if user_signed_in? %>
+              <% if current_user.already_liked?(t) %>
+                <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), data: { turbo_method: :delete }, class: "me-2" do %>
+                  <i class="fas fa-heart text-danger"></i>
+                  <%= t.likes.count %>
                 <% end %>
               <% else %>
-                <i class="fas fa-heart text-danger me-1"></i><%= t.likes.count %>
+                <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), data: { turbo_method: :post }, class: "me-2" do %>
+                  <i class="fas fa-heart text-danger"></i>
+                  <%= t.likes.count %>
+                <% end %>
               <% end %>
-            </div>
+            <% else %>
+              <i class="fas fa-heart text-danger me-1"></i><%= t.likes.count %>
+            <% end %>
+          </div>
 
-            <p class="small text-muted"><%= t.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+          <p class="small text-muted"><%= t.created_at.strftime("%Y-%m-%d %H:%M") %></p>
 
-            <div class="d-flex flex-wrap gap-2">
-              <%= link_to "詳細へ", tweet_path(t.id), class: "btn btn-sm btn-outline-primary" %>
-              <% if user_signed_in? && (current_user.admin? || current_user == t.user) %>
-                <%= link_to "編集する", edit_tweet_path(t.id), class: "btn btn-sm btn-outline-secondary" %>
-                <%= button_to "削除する", tweet_path(t.id), method: :delete, class: "btn btn-sm btn-outline-danger" %>
-              <% end %>
-            </div>
+          <div class="d-flex flex-wrap gap-2">
+            <%= link_to "詳細へ", tweet_path(t.id), class: "btn btn-sm btn-outline-primary rounded-pill" %>
+            <% if user_signed_in? && (current_user.admin? || current_user == t.user) %>
+              <%= link_to "編集する", edit_tweet_path(t.id), class: "btn btn-sm btn-outline-secondary rounded-pill" %>
+              <%= button_to "削除する", tweet_path(t.id), method: :delete, class: "btn btn-sm btn-outline-danger rounded-pill" %>
+            <% end %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 
 <section id="access" class="py-5">
